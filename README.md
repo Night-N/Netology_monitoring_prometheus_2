@@ -35,10 +35,12 @@ groups:
       summary: Instance {{ $labels.instance }} down 
 ```
 Node exporter на хосте остановлен:
-![](img/1.jpg)
+
+<img src="./img/1.jpg" width="70%"/>
 
 В прометеусе после этого появилось оповещение в статусе "pending"
-![](img/2.jpg)
+
+<img src="./img/2.jpg" width="70%"/>
 
 ## Задание 2
 - Alertmanager.
