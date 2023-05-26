@@ -114,4 +114,4 @@ receivers:
 ## Задание 4
 Дашборд Grafana.
 
-<img src="./img/7.jpg" width="70%"/>
+<img src="./img/7.jpg"/>
