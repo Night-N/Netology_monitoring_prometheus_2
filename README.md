@@ -18,9 +18,9 @@
 >Создайте свой дашборд Grafana с различными метриками Docker и сервера, на котором он стоит.
 
 ## Задание 1
-- Правила оповещения Prometheus.
+Правила оповещения Prometheus.
 
-Создано оповещение netology-test.yml:
+- Создано оповещение netology-test.yml:
 ```yml
 groups: 
 - name: netology-test 
@@ -34,18 +34,18 @@ groups:
       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.' 
       summary: Instance {{ $labels.instance }} down 
 ```
-Node exporter на хосте остановлен:
+- Node exporter на хосте остановлен:
 
 <img src="./img/1.jpg" width="70%"/>
 
-В прометеусе после этого появилось оповещение в статусе "pending"
+- В прометеусе после этого появилось оповещение в статусе "pending"
 
 <img src="./img/2.jpg" width="70%"/>
 
 ## Задание 2
-- Alertmanager.
+Alertmanager.
 
-Алерт менеджер запущен в качестве сервисного юнита:
+- Алерт менеджер запущен в качестве сервисного юнита:
 >/etc/systemd/system/prometheus-alertmanager.service
 ```bash
 [Unit]
@@ -63,7 +63,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-Конфигурация алерт менеджера:
+- Конфигурация алерт менеджера:
 >/etc/prometheus/alertmanager.yml
 ```yaml
 global:
@@ -83,18 +83,18 @@ receivers:
     auth_identity: 'user'
     auth_password: 'paS$w0rd'
 ```
-Сработка оповещения в прометеусе, статус firing:
+- Сработка оповещения в прометеусе, статус firing:
 
-![](img/3.jpg)
+<img src="./img/3.jpg" width="70%"/>
 
-Статус алерта в алерт менеджере:
+- Статус алерта в алерт менеджере:
 
-![](img/4.jpg)
+<img src="./img/4.jpg" width="70%"/>
 
 ## Задание 3
-- Экспортер метрик Docker.
+Экспортер метрик Docker.
 
-Включение встроенного экспортера метрик в докере:
+- Включение встроенного экспортера метрик в докере:
 >/etc/docker/daemon.json
 ```
 {
@@ -103,15 +103,15 @@ receivers:
 }
 ```
 
-Экспортер доступен на локальном порту 9323:
+- Экспортер доступен на локальном порту 9323:
 
-![](img/5.jpg)
+<img src="./img/5.jpg" width="70%"/>
 
-И появился в списке таргетов прометеуса:
+- И появился в списке таргетов прометеуса:
 
-![](img/6.jpg)
+<img src="./img/6.jpg" width="70%"/>
 
 ## Задание 4
-- Дашборд Grafana.
+Дашборд Grafana.
 
-![](img/7.jpg)
+<img src="./img/7.jpg" width="70%"/>
